@@ -17,15 +17,31 @@ bible_router = APIRouter()
 @bible_router.get("/bible/books", response_model=List[str], tags=["bible"])
 @LIMITER.limit("60/minute")
 async def get_books(request: Request):
+    """
+    Retrieves a list of all books in the Bible.
+
+    Returns:
+        List[str]: A list of all books in the Bible.
+    """
     bible = Bible(BOOKS_FILE)
     books = bible.get_books()
     logger.info("Books retrieved successfully.")
     return books
 
 
-@bible_router.post("/bible/verse", response_model=VerseResponse, tags=["bible"])
+@bible_router.post("/bible/verse", response_model=VerseResponse, tags=["Bible"])
 @LIMITER.limit("60/minute")
 async def get_verse(verse_request: VerseRequest, request: Request) -> VerseResponse:
+    """
+    Retrieves the text of a specific verse or range of verses from the Bible.
+
+    Args:
+        verse_request (VerseRequest): The request object containing the book, chapter, and verse range.
+        request (Request): The FastAPI request object.
+
+    Returns:
+        VerseResponse: The response object containing the requested verse(s) text.
+    """
     bible = Bible(BOOKS_FILE)
     text = bible.get_text(verse_request)
     if text is None:

@@ -11,7 +11,6 @@ from helpers.constants import (
     BOOKS_FILE,
     BACKGROUND_IMAGE,
     TEXT_COLOR,
-    MAX_LINES_PER_IMAGE,
     LINE_SPACING,
     LIMITER,
 )
@@ -79,11 +78,22 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
     logger.info("Image generation completed.")
 
 
-@art_maker_router.post("/art_maker")
+@art_maker_router.post("/image/verse", tags=["Image"])
 @LIMITER.limit("1/min")
 async def art_maker(
     verse_request: VerseRequest, request: Request, response: JSONResponse
 ):
+    """
+    Generates an image with the requested Bible verse and returns a JSON response with a message indicating
+    that the image generation has been completed.
+
+    Args:
+        verse_request (VerseRequest): The request object containing the book, chapter, and verse range.
+        response (JSONResponse): The outgoing response.
+
+    Returns:
+        JSONResponse: A JSON response with a message indicating that the image generation has been completed.
+    """
     generate_verse_images(verse_request)
     return JSONResponse(
         status_code=200, content={"message": "Image generation completed."}
