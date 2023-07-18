@@ -83,7 +83,7 @@ A JSON response with a message indicating that the image generation has been com
 
 Image created:
 
-<img src="https://github.com/josehenriqueroveda/bible-art-maker/blob/main/app/assets/Jo%2525C3%2525A3o_16_33-33.jpg" width=720 class="inline"/>
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Jo%C3%A3o_16_33-33.jpg" width=720 class="inline"/>
 
 
 ## API Documentation
