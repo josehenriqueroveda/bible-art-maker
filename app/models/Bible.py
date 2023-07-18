@@ -8,6 +8,9 @@ class Bible:
         with open(books_file, "r", encoding="utf-8-sig") as file:
             self.bible_data = json.load(file)
 
+    def get_books(self):
+        return [data["name"] for data in self.bible_data]
+
     def get_text(self, verse_request: VerseRequest):
         book_data = next(
             (data for data in self.bible_data if data["name"] == verse_request.book),

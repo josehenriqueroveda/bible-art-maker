@@ -29,8 +29,8 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
         return
 
     verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}-{verse_request.end_verse}"
-    font_text = ImageFont.truetype("arial.ttf", 32)
-    font_info = ImageFont.truetype("arial.ttf", 24)
+    font_text = ImageFont.truetype("arialbd.ttf", 40)
+    font_info = ImageFont.truetype("arial.ttf", 32)
 
     image = Image.open(BACKGROUND_IMAGE)
     W, H = image.size
@@ -41,35 +41,29 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
     verse_text = "\n".join(lines)
 
     border_color = (0, 0, 0)
-    fill_color = (255, 255, 255)
-    border_width = 1
+    border_width = 3
 
-    # Draw black border
-    for x in range(-border_width, border_width + 1):
-        for y in range(-border_width, border_width + 1):
-            draw.text(
-                (W / 2 + x, (H - 32) / 2 + y),
-                verse_text,
-                font=font_text,
-                fill=border_color,
-                spacing=LINE_SPACING,
-            )
-
-    # Draw white fill
+    _, _, w1, h1 = draw.multiline_textbbox(
+        (0, 0), verse_text, font=font_text, spacing=LINE_SPACING
+    )
     draw.text(
-        (W / 2, (H - 32) / 2),
+        ((W - w1) / 2, (H - h1) / 2),
         verse_text,
         font=font_text,
-        fill=fill_color,
+        fill=TEXT_COLOR,
         spacing=LINE_SPACING,
+        stroke_width=border_width,
+        stroke_fill=border_color,
     )
 
-    # _, _, w, h = draw.multiline_textbbox((0, 0), verse_text, font=font_text, spacing=LINE_SPACING)
-    # draw.text((W/2, (H-h)/2), verse_text, font=font_text, fill=TEXT_COLOR, spacing=LINE_SPACING)
-
-    _, _, w, h = draw.multiline_textbbox((0, 0), verse_info, font=font_info)
+    _, _, w2, h2 = draw.multiline_textbbox((0, 0), verse_info, font=font_info)
     draw.text(
-        ((W - w) / 2, (H - h) / 2 + 200), verse_info, font=font_info, fill=TEXT_COLOR
+        ((W - w2) / 2, (H - h2) / 2 + h1 + 50),
+        verse_info,
+        font=font_info,
+        fill=TEXT_COLOR,
+        stroke_width=2,
+        stroke_fill=border_color,
     )
 
     image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"

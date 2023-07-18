@@ -1,4 +1,5 @@
 import logging
+from typing import List
 
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
@@ -11,6 +12,15 @@ from helpers.constants import BOOKS_FILE, LIMITER
 logger = logging.getLogger(__name__)
 
 bible_router = APIRouter()
+
+
+@bible_router.get("/bible/books", response_model=VerseResponse, tags=["bible"])
+@LIMITER.limit("60/minute")
+async def get_books(request: Request) -> List[str]:
+    bible = Bible(BOOKS_FILE)
+    books = bible.get_books()
+    logger.info("Books retrieved successfully.")
+    return books
 
 
 @bible_router.post("/bible/verse", response_model=VerseResponse, tags=["bible"])
