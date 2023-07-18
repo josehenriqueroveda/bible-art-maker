@@ -14,9 +14,9 @@ logger = logging.getLogger(__name__)
 bible_router = APIRouter()
 
 
-@bible_router.get("/bible/books", response_model=VerseResponse, tags=["bible"])
+@bible_router.get("/bible/books", response_model=List[str], tags=["bible"])
 @LIMITER.limit("60/minute")
-async def get_books(request: Request) -> List[str]:
+async def get_books(request: Request):
     bible = Bible(BOOKS_FILE)
     books = bible.get_books()
     logger.info("Books retrieved successfully.")

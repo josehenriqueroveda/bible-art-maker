@@ -28,7 +28,15 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
         logger.error("Invalid book, chapter, or verse range.")
         return
 
-    verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}-{verse_request.end_verse}"
+    if verse_request.end_verse is None:
+        verse_info = (
+            f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}"
+        )
+        image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}.jpg"
+    else:
+        verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}-{verse_request.end_verse}"
+        image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"
+
     font_text = ImageFont.truetype("arialbd.ttf", 40)
     font_info = ImageFont.truetype("arial.ttf", 32)
 
@@ -66,7 +74,6 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
         stroke_fill=border_color,
     )
 
-    image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"
     image.save(image_path)
 
     logger.info("Image generation completed.")
