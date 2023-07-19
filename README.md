@@ -1,5 +1,7 @@
 # 📖 Bible Art-Maker API
 
+[![Bandit](https://github.com/josehenriqueroveda/bible-art-maker/actions/workflows/bandit.yml/badge.svg)](https://github.com/josehenriqueroveda/bible-art-maker/actions/workflows/bandit.yml)
+
 This API creates customized images of Bible verses. It handles text justification and splitting across multiple images, making it ideal for social media, presentations, and personal reflection.
 
 ## Installation
