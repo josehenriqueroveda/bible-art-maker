@@ -94,9 +94,18 @@ A JSON response with a message indicating that the image generation has been com
 }
 ```
 
-Image created:
+### Image created:
+**NVI**: 
 
-<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Jo%C3%A3o_16_33-33.jpg" width=720 class="inline"/>
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Isa%C3%ADas_54_16-17.jpg" width=720 class="inline"/>
+
+**ACF**:
+
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Deuteron%C3%B4mio_31_8.jpg" width=720 class="inline"/>
+
+**AA**:
+
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Jo%C3%A3o_16_33.jpg" width=720 class="inline"/>
 
 
 ## API Documentation
