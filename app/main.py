@@ -52,7 +52,7 @@ async def root(request: Request):
             <h1>Bible Art-Maker API</h1>
             <p>📖 API that creates customized images of Bible verses. It handles text justification and splitting across multiple images. Ideal for social media, presentations, and personal reflection.</p>
             <p><strong>Developer</strong>: Jose Henrique Roveda<br/>
-            <strong>GitHub</strong>: <a href=https://github.com/josehenriqueroveda/bible-art-maker">
+            <strong><a href=https://github.com/josehenriqueroveda/bible-art-maker">GitHub</a></strong>
         </body>
     </html>
         """

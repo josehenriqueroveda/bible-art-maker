@@ -46,9 +46,14 @@ POST /v1/bible/verse
 ```
 Retrieves the text of a specific verse or range of verses from the Bible.
 
+Available bible versions:
+- `nvi`: Nova Versão Internacional
+- `acf`: Almeida Corrigida Fiel
+- `aa`: Almeida Atualizada
+
 **Args**:
 
-`verse_request (VerseRequest)`: The request object containing the book, chapter, and verse range.
+`verse_request (VerseRequest)`: The request object containing the version, book, chapter, and verse range.
 
 **Return**:
 
@@ -56,6 +61,7 @@ The response object containing the requested verse(s) text.
 
 ```json
 {
+  "version": "nvi",
   "book": "João",
   "chapter": 16,
   "start_verse": 33,
@@ -68,11 +74,16 @@ The response object containing the requested verse(s) text.
 ```http
 POST /v1/image/verse
 ```
-Generates an image with the requested Bible verse
+Generates an image with the requested Bible verse.
+
+Available bible versions:
+- `nvi`: Nova Versão Internacional
+- `acf`: Almeida Corrigida Fiel
+- `aa`: Almeida Atualizada
 
 **Args**:
 
-`verse_request (VerseRequest)`: The request object containing the book, chapter, and verse range.
+`verse_request (VerseRequest)`: The request object containing the version, book, chapter, and verse range.
 
 **Return**:
 

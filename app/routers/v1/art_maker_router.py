@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 from models.VerseRequest import VerseRequest
 from models.Bible import Bible
 from helpers.constants import (
-    BOOKS_FILE,
+    BOOKS_DIR,
     BACKGROUND_IMAGE,
     TEXT_COLOR,
     LINE_SPACING,
@@ -21,19 +21,17 @@ art_maker_router = APIRouter()
 
 
 def generate_verse_images(verse_request: VerseRequest) -> None:
-    bible = Bible(BOOKS_FILE)
+    bible = Bible(f"{BOOKS_DIR}{verse_request.version}.json")
     verse_text = bible.get_text(verse_request)
     if verse_text is None:
         logger.error("Invalid book, chapter, or verse range.")
         return
 
     if verse_request.end_verse is None:
-        verse_info = (
-            f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}"
-        )
+        verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse} ({verse_request.version.upper()})"
         image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}.jpg"
     else:
-        verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}-{verse_request.end_verse}"
+        verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}-{verse_request.end_verse} ({verse_request.version.upper()})"
         image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"
 
     font_text = ImageFont.truetype("arialbd.ttf", 40)
@@ -80,8 +78,7 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
 
 @art_maker_router.post("/image/verse", tags=["Image"])
 @LIMITER.limit("1/min")
-async def art_maker(
-    verse_request: VerseRequest, request: Request):
+async def art_maker(verse_request: VerseRequest, request: Request):
     """
     Generates an image with the requested Bible verse and returns a JSON response with a message indicating
     that the image generation has been completed.

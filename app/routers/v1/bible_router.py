@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from models.VerseRequest import VerseRequest
 from models.VerseResponse import VerseResponse
 from models.Bible import Bible
-from helpers.constants import BOOKS_FILE, LIMITER
+from helpers.constants import BOOKS_DIR, LIMITER
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +23,7 @@ async def get_books(request: Request):
     Returns:
         List[str]: A list of all books in the Bible.
     """
-    bible = Bible(BOOKS_FILE)
+    bible = Bible(f"{BOOKS_DIR}nvi.json")
     books = bible.get_books()
     logger.info("Books retrieved successfully.")
     return books
@@ -42,7 +42,7 @@ async def get_verse(verse_request: VerseRequest, request: Request) -> VerseRespo
     Returns:
         VerseResponse: The response object containing the requested verse(s) text.
     """
-    bible = Bible(BOOKS_FILE)
+    bible = Bible(f"{BOOKS_DIR}{verse_request.version}.json")
     text = bible.get_text(verse_request)
     if text is None:
         logger.error("Invalid book, chapter, or verse range.")
@@ -56,6 +56,7 @@ async def get_verse(verse_request: VerseRequest, request: Request) -> VerseRespo
 
     logger.info("Verse retrieved successfully.")
     verse_response = VerseResponse(
+        version=verse_request.version,
         book=verse_request.book,
         chapter=verse_request.chapter,
         start_verse=verse_request.start_verse,
