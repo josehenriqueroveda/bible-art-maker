@@ -84,7 +84,7 @@ Available bible versions:
 
 **Args**:
 
-`verse_request (VerseRequest)`: The request object containing the version, book, chapter, and verse range.
+`verse_request (VerseRequest)`: The request object containing the version, book, chapter, verse range and mobile flag.
 
 **Return**:
 
@@ -95,18 +95,23 @@ A JSON response with a message indicating that the image generation has been com
 }
 ```
 
-### Image created:
+### Images created:
 **NVI**: 
 
-<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Isa%C3%ADas_54_16-17.jpg" width=720 class="inline"/>
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Isa%C3%ADas_54_16-17.jpg" width=720 class="inline"/>
 
 **ACF**:
 
-<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Deuteron%C3%B4mio_31_8.jpg" width=720 class="inline"/>
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Deuteron%C3%B4mio_31_8.jpg" width=720 class="inline"/>
 
 **AA**:
 
-<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/assets/Jo%C3%A3o_16_33.jpg" width=720 class="inline"/>
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Jo%C3%A3o_16_33.jpg" width=720 class="inline"/>
+
+
+### Image created for mobile:
+
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Filipenses_4_7.jpg" width=640 class="inline"/>
 
 
 ## API Documentation

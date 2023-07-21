@@ -15,9 +15,7 @@ from routers.v1.art_maker_router import art_maker_router
 limiter = LIMITER
 app = FastAPI(
     title="Bible Art-Maker API",
-    description="""📖 API that creates customized images of Bible verses. \
-            It handles text justification and splitting across multiple images. \
-            Ideal for social media, presentations, and personal reflection.
+    description="""📖 API that creates customized images of Bible verses. Ideal for social media, presentations, and personal reflection.
               <p><strong>Developer</strong>: Jose Henrique Roveda<br/>""",
     version="0.0.1",
 )
@@ -50,7 +48,7 @@ async def root(request: Request):
         </head>
         <body>
             <h1>Bible Art-Maker API</h1>
-            <p>📖 API that creates customized images of Bible verses. It handles text justification and splitting across multiple images. Ideal for social media, presentations, and personal reflection.</p>
+            <p>📖 API that creates customized images of Bible verses. Ideal for social media, presentations, and personal reflection.</p>
             <p><strong>Developer</strong>: Jose Henrique Roveda<br/>
             <strong><a href=https://github.com/josehenriqueroveda/bible-art-maker">GitHub</a></strong>
         </body>

@@ -2,6 +2,7 @@ from pydantic import BaseModel, validator
 
 
 class VerseRequest(BaseModel):
+    mobile: bool | None = None
     version: str = "nvi"
     book: str
     chapter: int
@@ -12,6 +13,8 @@ class VerseRequest(BaseModel):
         super().__init__(**data)
         self.version = self.version.lower()
         self.book = self.book.title()
+        if self.mobile is None:
+            self.mobile = False
 
     @validator("end_verse", pre=True)
     def set_end_verse(cls, value, values):

@@ -10,6 +10,7 @@ from models.Bible import Bible
 from helpers.constants import (
     BOOKS_DIR,
     BACKGROUND_IMAGE,
+    BACKGROUND_IMAGE_MOBILE,
     TEXT_COLOR,
     LINE_SPACING,
     LIMITER,
@@ -29,19 +30,28 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
 
     if verse_request.end_verse is None:
         verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse} ({verse_request.version.upper()})"
-        image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}.jpg"
+        image_path = f"images/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}.jpg"
     else:
         verse_info = f"{verse_request.book} {verse_request.chapter}:{verse_request.start_verse}-{verse_request.end_verse} ({verse_request.version.upper()})"
-        image_path = f"assets/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"
+        image_path = f"images/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"
 
-    font_text = ImageFont.truetype("arialbd.ttf", 40)
-    font_info = ImageFont.truetype("arial.ttf", 32)
+    if verse_request.mobile:
+        image = Image.open(BACKGROUND_IMAGE_MOBILE)
+        wrapper_width = 30
+        font_size_verse = 28
+        font_size_info = 22
+    else:
+        image = Image.open(BACKGROUND_IMAGE)
+        wrapper_width = 50
+        font_size_verse = 40
+        font_size_info = 32
 
-    image = Image.open(BACKGROUND_IMAGE)
+    font_text = ImageFont.truetype("arialbd.ttf", font_size_verse)
+    font_info = ImageFont.truetype("arial.ttf", font_size_info)
     W, H = image.size
     draw = ImageDraw.Draw(image)
 
-    wrapper = textwrap.TextWrapper(width=50)
+    wrapper = textwrap.TextWrapper(width=wrapper_width)
     lines = wrapper.wrap(text=verse_text)
     verse_text = "\n".join(lines)
 
@@ -59,6 +69,7 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
         spacing=LINE_SPACING,
         stroke_width=border_width,
         stroke_fill=border_color,
+        align="center",
     )
 
     _, _, w2, h2 = draw.multiline_textbbox((0, 0), verse_info, font=font_info)
@@ -69,6 +80,7 @@ def generate_verse_images(verse_request: VerseRequest) -> None:
         fill=TEXT_COLOR,
         stroke_width=2,
         stroke_fill=border_color,
+        align="center",
     )
 
     image.save(image_path)
