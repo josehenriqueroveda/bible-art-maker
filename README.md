@@ -111,7 +111,7 @@ A JSON response with a message indicating that the image generation has been com
 
 ### Image created for mobile:
 
-<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Filipenses_4_7.jpg" width=640 class="inline"/>
+<img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Filipenses_4_7.jpg" width=320 class="inline"/>
 
 
 ## API Documentation
