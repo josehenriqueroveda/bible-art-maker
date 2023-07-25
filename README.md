@@ -88,12 +88,8 @@ Available bible versions:
 
 **Return**:
 
-A JSON response with a message indicating that the image generation has been completed.
-```json
-{
-    "message": "Image generation completed."
-}
-```
+`FileResponse`: The image file.
+
 
 ### Images created:
 **NVI**: 
