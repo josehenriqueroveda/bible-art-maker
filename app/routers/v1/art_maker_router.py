@@ -1,4 +1,5 @@
 import os
+import random
 import logging
 import textwrap
 
@@ -10,8 +11,8 @@ from models.VerseRequest import VerseRequest
 from models.Bible import Bible
 from helpers.constants import (
     BOOKS_DIR,
-    BACKGROUND_IMAGE,
-    BACKGROUND_IMAGE_MOBILE,
+    BACKGROUND_IMAGE_DIR,
+    BACKGROUND_IMAGE_MOBILE_DIR,
     TEXT_COLOR,
     LINE_SPACING,
     LIMITER,
@@ -37,13 +38,15 @@ def generate_verse_images(verse_request: VerseRequest) -> str | None:
         image_path = f"temp/{verse_request.book}_{verse_request.chapter}_{verse_request.start_verse}-{verse_request.end_verse}.jpg"
 
     if verse_request.mobile:
-        image = Image.open(BACKGROUND_IMAGE_MOBILE)
+        path = f"{BACKGROUND_IMAGE_MOBILE_DIR}/{random.randint(1, 4)}.jpg"
+        image = Image.open(path)
         wrapper_width = 30
         font_size_verse = 28
         font_size_info = 22
         border_width = 2
     else:
-        image = Image.open(BACKGROUND_IMAGE)
+        path = f"{BACKGROUND_IMAGE_DIR}/{random.randint(1, 4)}.jpg"
+        image = Image.open(path)
         wrapper_width = 50
         font_size_verse = 40
         font_size_info = 32

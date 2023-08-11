@@ -7,8 +7,9 @@ LIMITER = Limiter(
 API_IP = "127.0.0.1"
 
 BOOKS_DIR = "db/"
-BACKGROUND_IMAGE = "assets/bg.jpg"
-BACKGROUND_IMAGE_MOBILE = "assets/bg_mobile.jpg"
+
+BACKGROUND_IMAGE_DIR = f"assets/landscape"
+BACKGROUND_IMAGE_MOBILE_DIR = f"assets/portrait"
 TEXT_COLOR = (255, 255, 255)  # White
 MAX_LINES_PER_IMAGE = 4
 LINE_SPACING = 10
