@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "bible-art-maker"
+version = "0.1.0"
+description = "API that creates customized images of Bible verses. Ideal for social media, presentations, and personal reflection."
+authors = ["Jose Henrique Roveda"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "bible_art_maker"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {extras = ["all"], version = "^0.104.0"}
+uvicorn = "^0.23.2"
+slowapi = "^0.1.8"
+Pillow = "^10.1.0"
+pre-commit = "^3.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
