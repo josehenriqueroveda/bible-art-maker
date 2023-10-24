@@ -33,7 +33,7 @@ The following API endpoints are available:
 GET /v1/bible/books
 ```
 
-**Return**: 
+**Return**:
 
 Returns a list of all books in the Bible.
 
@@ -92,7 +92,7 @@ Available bible versions:
 
 
 ### Images created:
-**NVI**: 
+**NVI**:
 
 <img src="https://raw.githubusercontent.com/josehenriqueroveda/bible-art-maker/main/app/images/Isa%C3%ADas_54_16-17.jpg" width=720 class="inline"/>
 

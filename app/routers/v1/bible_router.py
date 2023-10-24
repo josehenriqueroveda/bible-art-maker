@@ -1,13 +1,14 @@
 import logging
 from typing import List
 
-from fastapi import APIRouter, Request
+from fastapi import APIRouter
+from fastapi import Request
 from fastapi.responses import JSONResponse
-
+from helpers.constants import BOOKS_DIR
+from helpers.constants import LIMITER
+from models.Bible import Bible
 from models.VerseRequest import VerseRequest
 from models.VerseResponse import VerseResponse
-from models.Bible import Bible
-from helpers.constants import BOOKS_DIR, LIMITER
 
 logger = logging.getLogger(__name__)
 

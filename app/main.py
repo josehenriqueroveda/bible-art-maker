@@ -1,15 +1,17 @@
 import os
 
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi import FastAPI
+from fastapi import Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
+from fastapi.responses import JSONResponse
+from helpers.constants import API_IP
+from helpers.constants import LIMITER
+from routers.v1.art_maker_router import art_maker_router
+from routers.v1.bible_router import bible_router
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from uvicorn import run
-
-from helpers.constants import LIMITER, API_IP
-from routers.v1.bible_router import bible_router
-from routers.v1.art_maker_router import art_maker_router
 
 
 limiter = LIMITER

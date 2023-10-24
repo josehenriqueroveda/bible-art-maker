@@ -1,22 +1,24 @@
+import logging
 import os
 import random
-import logging
 import textwrap
 
-from fastapi import APIRouter, Request, BackgroundTasks
-from fastapi.responses import FileResponse, JSONResponse
-from PIL import Image, ImageDraw, ImageFont
-
-from models.VerseRequest import VerseRequest
+from fastapi import APIRouter
+from fastapi import BackgroundTasks
+from fastapi import Request
+from fastapi.responses import FileResponse
+from fastapi.responses import JSONResponse
+from helpers.constants import BACKGROUND_IMAGE_DIR
+from helpers.constants import BACKGROUND_IMAGE_MOBILE_DIR
+from helpers.constants import BOOKS_DIR
+from helpers.constants import LIMITER
+from helpers.constants import LINE_SPACING
+from helpers.constants import TEXT_COLOR
 from models.Bible import Bible
-from helpers.constants import (
-    BOOKS_DIR,
-    BACKGROUND_IMAGE_DIR,
-    BACKGROUND_IMAGE_MOBILE_DIR,
-    TEXT_COLOR,
-    LINE_SPACING,
-    LIMITER,
-)
+from models.VerseRequest import VerseRequest
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
 
 logger = logging.getLogger(__name__)
 

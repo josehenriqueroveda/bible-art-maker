@@ -1,4 +1,5 @@
-from pydantic import BaseModel, validator
+from pydantic import BaseModel
+from pydantic import validator
 
 
 class VerseRequest(BaseModel):
