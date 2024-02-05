@@ -9,7 +9,7 @@ packages = [{include = "bible_art_maker"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = {extras = ["all"], version = "^0.104.0"}
+fastapi = {extras = ["all"], version = "^0.109.1"}
 uvicorn = "^0.23.2"
 slowapi = "^0.1.8"
 Pillow = "^10.2.0"
