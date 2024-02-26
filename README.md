@@ -3,7 +3,7 @@
 [![Bandit](https://github.com/josehenriqueroveda/bible-art-maker/actions/workflows/bandit.yml/badge.svg)](https://github.com/josehenriqueroveda/bible-art-maker/actions/workflows/bandit.yml)
 [![Lint](https://github.com/josehenriqueroveda/bible-art-maker/actions/workflows/black.yml/badge.svg)](https://github.com/josehenriqueroveda/bible-art-maker/actions/workflows/black.yml)
 
-This API creates customized images of Bible verses. Ideal for social media, presentations, and personal reflection.
+API that creates customized images of Bible verses. Ideal for social media, presentations, and personal reflection.
 
 ## Installation
 To install this API, clone the repository and install the dependencies:
@@ -111,7 +111,7 @@ Available bible versions:
 
 
 ## API Documentation
-The API documentation is available at `http://localhost:8000/docs` or `http://localhost:8000/redoc`. You can use the documentation to explore the available endpoints and test them out.
+The API documentation is available at `http://localhost:8777/docs` or `http://localhost:8777/redoc`. You can use the documentation to explore the available endpoints and test them out.
 
 ## License
 This package is licensed under the GNU License. See the [LICENSE](LICENSE) file for details.
